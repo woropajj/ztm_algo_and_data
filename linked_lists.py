@@ -4,7 +4,6 @@ class Node:
     def __init__(self, value):
         self.value = value
         self.next = None
-        self.prev = None
 
     def __repr__(self):  # __str__ tu nie zadzialalo
         return str(self.__dict__)
@@ -19,7 +18,6 @@ class LinkedList:
 
     def append(self, value):
         new_node = Node(value)
-        new_node.prev = self.tail
         self.tail.next = new_node
         self.tail = new_node
         self.length += 1
@@ -59,7 +57,7 @@ class LinkedList:
     def remove(self, index):
         assert index >= 0, "index should be non negative you dummy!"
         if index > self.length:
-            print("You can't remove stuff that isn't there!")
+            print("Can't remove something that isn't there!")
             return
 
         if index == 0:
@@ -94,10 +92,10 @@ myLinkedList = LinkedList(10)
 myLinkedList.append(5)
 myLinkedList.append(16)
 myLinkedList.prepend(1)
-# print(myLinkedList.print_list())
-# myLinkedList.insert(2, 99)
-# myLinkedList.insert(20, 88)
-# myLinkedList.remove(5)
-# myLinkedList.remove(0)
-# myLinkedList.remove(100)
+print(myLinkedList.print_list())
+myLinkedList.insert(2, 99)
+myLinkedList.insert(20, 88)
+myLinkedList.remove(5)
+myLinkedList.remove(0)
+myLinkedList.remove(100)
 print(myLinkedList)
