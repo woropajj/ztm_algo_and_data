@@ -68,9 +68,11 @@ class LinkedList:
         if index == 0:
             self.head = self.traverse_to_index(index + 1)
         else:
-            leader = self.traverse_to_index(index - 1)
-            unwanted_node = leader.next
-            leader.next = unwanted_node.next
+            unwanted_node = self.traverse_to_index(index)
+            leader = unwanted_node.prev
+            follower = unwanted_node.next
+            leader.next = follower
+            follower.prev = leader
         self.length -= 1
 
         return print(self.print_list())
@@ -83,7 +85,6 @@ class LinkedList:
         return current_node
 
     def traverse_to_index(self, index):
-        # check params
         counter = 0
         current_node = self.head
         while counter != index:
@@ -100,7 +101,7 @@ myLinkedList.prepend(1)
 print(myLinkedList.print_list())
 myLinkedList.insert(2, 99)
 # myLinkedList.insert(20, 88)
-# myLinkedList.remove(5)
+myLinkedList.remove(3)
 # myLinkedList.remove(0)
 # myLinkedList.remove(100)
 print(myLinkedList)
