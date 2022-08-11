@@ -87,6 +87,21 @@ class LinkedList:
 
         return current_node
 
+    def reverse(self):
+        if self.length == 1:
+            return self.head
+
+        first = self.head
+        self.tail = self.head
+        second = first.next
+        while second is not None:
+            temp = second.next
+            second.next = first
+            first = second
+            second = temp
+        self.head.next = None
+        self.head = first
+
 
 myLinkedList = LinkedList(10)
 myLinkedList.append(5)
@@ -96,6 +111,8 @@ print(myLinkedList.print_list())
 myLinkedList.insert(2, 99)
 myLinkedList.insert(20, 88)
 myLinkedList.remove(5)
-myLinkedList.remove(0)
-myLinkedList.remove(100)
+# myLinkedList.remove(0)
+# myLinkedList.remove(100)
+myLinkedList.reverse()
+print(myLinkedList.print_list())
 print(myLinkedList)
